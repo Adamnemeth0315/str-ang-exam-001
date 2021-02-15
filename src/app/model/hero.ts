@@ -1,5 +1,5 @@
 export class Hero {
-    id: number = 0;
+    id: string = '';
     name: string = '';
     superPower: string = '';
     address: string = '';
