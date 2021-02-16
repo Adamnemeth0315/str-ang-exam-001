@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hero } from 'src/app/model/hero';
 import { HeroService } from 'src/app/service/hero.service';
@@ -10,7 +10,9 @@ import { HeroService } from 'src/app/service/hero.service';
 })
 export class HeroesComponent implements OnInit {
 
+  phrase: string = '';
   heroList$: Observable<Hero[]> = this.heroService.getAll();
+  columnKey: string = '';
 
   constructor(
     private heroService: HeroService
@@ -19,4 +21,12 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  onColumnSelect(key: string) {
+    this.columnKey = key;
+  }
 }
+
